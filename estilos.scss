@@ -1,0 +1,102 @@
+// inicio vars
+
+$color1: #9cacbf;
+$color2: #032e42;
+$color3: #2b6684;
+$color4: #012e67;
+$color5: #0a1417;
+
+// fin vars
+
+// inicio estilo
+
+body {
+    background-image: radial-gradient(circle, #9cacbf, #a5b5c9, #afbfd4, #b8c8de, #c2d2e9);
+    background-image: url(./img/Bull_markets-1.webp);
+    background-size: cover;
+}
+
+
+// inicio header
+
+header {
+    background-color: $color2 !important;
+}
+
+.navbar {
+    background-color: $color2 !important;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.nav-link {
+    color: white !important;
+}
+
+// fin header
+
+// inicio main
+
+main {
+    margin: 20px;
+    background-color: rgba(192, 202, 180, 0.65);
+    padding: 20px;
+}
+.row{
+    margin-top: 40px;
+
+    h1{
+        margin: 20px;
+    }
+}
+
+// inicio footer
+
+footer {
+    background-color: #0a1417 !important;
+    margin-top: 1.6rem;
+    color: white;
+    padding: 0.5rem;
+    font-family: 'Open Sans', sans-serif;
+
+    .row {
+        margin: 0 !important;
+    }
+}
+
+.horarios {
+    ul {
+        list-style: none;
+    }
+}
+
+.datos {
+    text-align: center;
+
+    ul {
+        list-style: none;
+        padding-left: 0 !important;
+    }
+
+    img {
+        width: 1rem;
+    }
+}
+
+.redes {
+    text-align: center;
+
+    ul {
+        list-style: none;
+    }
+
+    img {
+        width: 1rem;
+    }
+}
+
+// fin footer
+
+// Compra
+.compra {
+    padding: 1rem;
+}
