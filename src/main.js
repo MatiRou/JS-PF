@@ -1,5 +1,6 @@
 
-function comprar(nombreDeMoneda, precioMoneda = 0, saldo, importePedido){
+function comprar(nombreDeMoneda, precioMoneda = 0, saldo){
+    let importePedido = Number(prompt('ingrese el monto que quiere comprar'))
     const tieneSaldo = validarSaldo(saldo, importePedido);
     const cantidadPedida = importePedido / precioMoneda
     if(tieneSaldo){
@@ -9,8 +10,8 @@ function comprar(nombreDeMoneda, precioMoneda = 0, saldo, importePedido){
     }
 }
 
-comprar('Bitcoin', 39000, 1800, 1500)
-comprar('Dai', 1.01,2000,1000)
+comprar('Bitcoin', 39000, 1800)
+comprar('Dai', 1.01,2000)
 
 function validarSaldo(saldoPesos, importePedido){
     if (saldoPesos > importePedido){
@@ -20,7 +21,8 @@ function validarSaldo(saldoPesos, importePedido){
     }
 }
 
-function vender(nombreDeMoneda, precioMoneda = 0, saldo, importePedido){
+function vender(nombreDeMoneda, precioMoneda = 0, saldo){
+    let importePedido = Number(prompt('ingrese el monto que quiere vender'))
     const tieneSaldo = validarSaldo(saldo, importePedido);
     const cantidadPedida = importePedido / precioMoneda
     if(tieneSaldo){
@@ -30,7 +32,7 @@ function vender(nombreDeMoneda, precioMoneda = 0, saldo, importePedido){
     }
 }
 
-vender('Bitcoin', 39000, 2000, 1800)
+vender('Bitcoin', 39000, 2000)
 
 function validarSaldo(saldoPesos, importePedido){
     if (saldoPesos > importePedido){
