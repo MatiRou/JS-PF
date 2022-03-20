@@ -1,40 +1,108 @@
-function comprar(nombreDeMoneda, precioMoneda = 0, saldo) {
-    let importePedido = Number(prompt('ingrese el monto que quiere comprar'))
-    const tieneSaldo = validarSaldo(saldo, importePedido);
-    const cantidadPedida = importePedido / precioMoneda
-    if (tieneSaldo) {
-        console.log(`Compraste ${cantidadPedida} de ${nombreDeMoneda} a ${importePedido}`);
-    } else {
-        console.log(`No tenes Saldo disponible`);
+// Array Monedas 
+const monedas = [{
+        id: 1,
+        nombreDeMoneda: "Pesos Argentinos",
+        precioMonedaUsd: 0.005274,
+        precioMonedaArs: 1,
+        comision: 0.0005,
+        saldoMoneda: 0,
+        abreviatura: "ARS",
+    },
+    {
+        id: 2,
+        nombreDeMoneda: "DAI",
+        precioMonedaUsd: 1.007,
+        precioMonedaArs: 189.60,
+        comision: 0.0005,
+        saldoMoneda: 100,
+        abreviatura: "DAI",
+    },
+    {
+        id: 3,
+        nombreDeMoneda: "Bitcoin",
+        precioMonedaUsd: 38804.71,
+        precioMonedaArs: 7354200,
+        comision: 0.001,
+        saldoMoneda: 0.000005,
+        abreviatura: "BTC",
+    },
+    {
+        id: 4,
+        nombreDeMoneda: "Ethereum",
+        precioMonedaUsd: 2565.31,
+        precioMonedaArs: 486400,
+        comision: 0.001,
+        saldoMoneda: 0.0006,
+        abreviatura: "ETH"
+    },
+    {
+        id: 5,
+        nombreDeMoneda: "Litcoin",
+        precioMonedaUsd: 1.13,
+        precioMonedaArs: 214248,
+        comision: 0.001,
+        saldoMoneda: 0,
+        abreviatura: "LTC"
+    },
+    {
+        id: 6,
+        nombreDeMoneda: "Dolar Estadounidense",
+        precioMonedaUsd: 1,
+        precioMonedaArs: 189.60,
+        comision: 0.0005,
+        saldoMoneda: 1500,
+        abreviatura: "USD"
+    },
+]
+
+const precioVenta = monedas.map((monedasVenta) => {
+    return {
+        id: monedasVenta.id,
+        nombreDeMoneda: monedasVenta.nombreDeMoneda,
+        precioMonedaUsd: monedasVenta.precioMonedaUsd / 0.976951283,
+        precioMonedaArs: monedasVenta.precioMonedaArs / 0.976951283,
+        comision: monedasVenta.comision,
+        saldoMoneda: monedasVenta.saldoMoneda
     }
+})
+
+console.log(precioVenta)
+
+
+
+
+// ***************************************************************************
+
+
+generarCard(monedas);
+
+function generarCard(monedas) {
+    let cardsGeneradas = ``;
+    // const saldoValidado = monedas.saldoMoneda > 0 ? "true" : "false";
+    monedas.forEach(elementoDelArray => {
+        if (elementoDelArray.saldoMoneda > 0){
+            cardsGeneradas += `
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">${elementoDelArray.nombreDeMoneda}</h5>
+                        <p class="card-text">${elementoDelArray.saldoMoneda} ${elementoDelArray.abreviatura}</p>
+                    </div>
+                </div>
+            </div>`;
+        } else{
+            cardsGeneradas += ``
+        }
+    });
+    mostrarCardsEnElHTML(cardsGeneradas);
 }
 
-comprar('Bitcoin', 39000, 1800)
-comprar('Dai', 1.01,2000)
-
-function validarSaldo(saldoPesos, importePedido) {
-    if (saldoPesos > importePedido) {
-        return true;
-    } else {
-        return false;
-    }
+function mostrarCardsEnElHTML (cards) {
+    document.getElementById("saldos-monedas-index").innerHTML =cards
 }
 
-function vender(nombreDeMoneda, precioMoneda = 0, saldo) {
-    let importePedido = Number(prompt('ingrese el monto que quiere vender'))
-    const tieneSaldo = validarSaldo(saldo, importePedido);
-    const cantidadPedida = importePedido / precioMoneda
-    if (tieneSaldo) {
-        console.log(`Vendiste ${cantidadPedida} de ${nombreDeMoneda} a ${importePedido}`);
-    } else {
-        console.log(`No tenes Saldo disponible`);
-    }
-}
-
-vender('Bitcoin', 39000, 2000)
-
-function validarSaldo(saldoPesos, importePedido) {
-    if (saldoPesos > importePedido) {
+function validadorSaldo (monedas) {
+    if (monedas.saldoMoneda > 0){
         return true;
     } else {
         return false;
@@ -42,7 +110,7 @@ function validarSaldo(saldoPesos, importePedido) {
 }
 
 // class Crypto {
-//     constructor(id, nombre, precioMonedaUsd, precioMonedaArs , comision, saldoMoneda){
+    //     constructor(id, nombre, precioMonedaUsd, precioMonedaArs , comision, saldoMoneda){
 //         this.id = id
 //         this.nombre = nombre;
 //         this.precioMoneda = precioMonedaUsd;
@@ -61,85 +129,116 @@ function validarSaldo(saldoPesos, importePedido) {
 
 
 
-// Array Monedas 
-const monedas = [{
-        id: "ARS",
-        nombreDeMoneda: "Pesos Argentinos",
-        precioMonedaUsd: 0.005274,
-        precioMonedaArs: 1,
-        comision: 0.0005,
-        saldoMoneda: 10000,
-    },
-    {
-        id: "DAI",
-        nombreDeMoneda: "DAI",
-        precioMonedaUsd: 1.007,
-        precioMonedaArs: 189.60,
-        comision: 0.0005,
-        saldoMoneda: 100
-    },
-    {
-        id: "BTC",
-        nombreDeMoneda: "Bitcoin",
-        precioMonedaUsd: 38804.71,
-        precioMonedaArs: 7354200,
-        comision: 0.001,
-        saldoMoneda: 0.000005
-    },
-    {
-        id: "ETH",
-        nombreDeMoneda: "Ethereum",
-        precioMonedaUsd: 2565.31,
-        precioMonedaArs: 486400,
-        comision: 0.001,
-        saldoMoneda: 0.0006
-    },
-    {
-        id: "LIT",
-        nombreDeMoneda: "Litcoin",
-        precioMonedaUsd: 1.13,
-        precioMonedaArs: 214248,
-        comision: 0.001,
-        saldoMoneda: 252
-    },
-    {
-        id: "USD",
-        nombreDeMoneda: "Dolar Estadounidense",
-        precioMonedaUsd: 1,
-        precioMonedaArs: 189.60,
-        comision: 0.0005,
-        saldoMoneda: 1500
-    },
-]
 
-// cards
+// ******************** COMPRAR.HTML ********************************************
+
+// LISTADOS MONEDAS
+
+listadoMonedas(monedas);
+
+function listadoMonedas(monedas) {
+    let listadoGenerado = ``;
+    monedas.forEach(elementoDelArray => {
+        listadoGenerado += `
+        <option value="${elementoDelArray.abreviatura}">${elementoDelArray.abreviatura}</option>
+        `;
+    });
+    mostrarListadoEnHTML(listadoGenerado);
+}
+function mostrarListadoEnHTML (lista) {
+    document.getElementById("comprar").innerHTML = lista
+}
 
 
-let cardsGeneradas = ``;
 
-monedas.forEach(moneda => {
-    cardsGeneradas += `<div class="row">
+// funcion comprar 
+
+function comprar() {
+    const importePedido = document.getElementById("cantidadCompra").value
+    const tieneSaldo = validarSaldo(saldo, importePedido);
+    const cantidadPedida = importePedido / precioMoneda
+    if (tieneSaldo) {
+        console.log(`Compraste ${cantidadPedida} de ${nombreDeMoneda} a ${importePedido}`);
+    } else {
+        console.log(`No tenes Saldo disponible`);
+    }
+}
+
+// comprar('Bitcoin', 39000, 1800)
+// comprar('Dai', 1.01,2000)
+
+function validarSaldo(saldoPesos, importePedido) {
+    if (saldoPesos > importePedido) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+
+
+// ********************************************************************
+
+// ******************* VENDER HTML ************************************
+
+function vender(nombreDeMoneda, precioMoneda = 0, saldo) {
+    let importePedido = Number(prompt('ingrese el monto que quiere vender'))
+    const tieneSaldo = validarSaldo(saldo, importePedido);
+    const cantidadPedida = importePedido / precioMoneda
+    if (tieneSaldo) {
+        console.log(`Vendiste ${cantidadPedida} de ${nombreDeMoneda} a ${importePedido}`);
+    } else {
+        console.log(`No tenes Saldo disponible`);
+    }
+}
+
+// vender('Bitcoin', 39000, 2000)
+
+function validarSaldo(saldoPesos, importePedido) {
+    if (saldoPesos > importePedido) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// ************************************************************************
+
+// ********************** INDEX HTML **************************************
+
+// cardsSaldos
+
+generarCard(monedas);
+
+function generarCard(monedas) {
+    let cardsGeneradas = ``;
+    monedas.forEach(elementoDelArray => {
+        cardsGeneradas += `
         <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">${moneda.nombreDeMoneda}</h5>
-                    <p class="card-text">${moneda.saldoMoneda} ${moneda.id}</p>
-                </div>
-            </div>
-        </div>
-    </div>`;
-})
+        <div class="card">
+        <div class="card-body">
+        <h5 class="card-title">${elementoDelArray.nombreDeMoneda}</h5>
+        <p class="card-text">${elementoDelArray.saldoMoneda} ${elementoDelArray.abreviatura}</p>
+                    </div>
+                    </div>
+            </div>`;
+        });
+        mostrarCardsEnElHTML(cardsGeneradas);
+    }
 
-document.write(cardsGeneradas)
+    function mostrarCardsEnElHTML (cards) {
+        document.getElementById("saldos-monedas-index").innerHTML =cards
+    }
 
-// funcion sumar saldo en usd 
+    
+    // funcion sumar saldo en usd 
 
-let saldoTotalUsd = 0;
+const saldoTotalUsd2 = monedas.reduce((acc, saldoTotal) => acc + (saldoTotal.saldoMoneda * saldoTotal.precioMonedaUsd), 0)
 
-monedas.forEach(moneda => {
-    saldoTotalUsd += (moneda.saldoMoneda * moneda.precioMonedaUsd)
-})
-console.log(`Tu saldo en Dolares es: ${saldoTotalUsd}`)
+let spotbalances = document.getElementById("SpotBalance")
+spotbalances.innerText = `SpotBalance = USD ${saldoTotalUsd2}`
+
 
 
 // variable y funcion de favoritos 
@@ -157,9 +256,3 @@ console.log(favoritos)
 agregarFavoritos(monedas[2]);
 console.log(favoritos);
 
-
-// todas las monedas de la wallet 
-
-monedas.forEach(moneda => {
-    console.log(moneda)
-})
