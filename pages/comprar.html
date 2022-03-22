@@ -68,46 +68,34 @@
                 <p>Seleccioná la moneda que desees comprar y con cual desea pagar para generar la transaccion</p>
             </div>
             <div id="datos">
-                <ul>
-                    <!-- <li><img src="../img/redes/tel.png" alt="Telefono"> +54 9 11 1111-1111</li>
-                    <li><img src="../img/redes/mail.png" alt=""> Contacto@innmobiliariasalome.com.ar</li> -->
+                <h2>Saldos:</h2>
+                <ul id="saldos-compra">
+                    <li></li>
                 </ul>
             </div>
         </section>
         <div
             class="texto animate__animated animate__backInRight col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 offset-md-2 offset-lg-2 offset-xl-2">
-            <form>
+            <form action="#">
                 <div class="form-group">
                     <label for="Comprar">Vas a Comprar: </label>
-                    <select class="form-control" id="comprar">
-                        <!-- <option>DAI</option>
-                        <option>BITCOIN</option>
-                        <option>ETHEREUM</option>
-                        <option>LITCOIN</option>
-                        <option>PESOS ARGENTINOS</option>
-                        <option>USD</option> -->
+                    <select class="form-control" id="comprar" onchange="seleccionadorMonedaCompra()">
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="cantidadCompra">Vas a Comprar:</label>
-                    <input type="text" class="form-control" id="cantidadCompra" placeholder="0.000">
+                    <input type="number" class="form-control" id="importePedido" oninput="importeDeCompra()" placeholder="0.000">
                 </div>
                 <div class="form-group">
                     <label for="PagarCompra">Vas a Pagar con: </label>
-                    <select class="form-control" id="pagar-compra">
-                        <!-- <option>PESOS ARGENTINOS</option>
-                        <option>DAI</option>
-                        <option>USD</option>
-                        <option>BITCOIN</option>
-                        <option>ETHEREUM</option>
-                        <option>LITCOIN</option> -->
+                    <select class="form-control" id="pagar-compra" onchange="seleccionadorMonedaPagar()">
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="cantidadPagarC">Vas a Pagar:</label>
-                    <input type="text" class="form-control" id="idinm" placeholder="Ejemplo: AT-001">
+                    <div class="form-control" id="conversion-moneda-pagar"> </div>
                 </div>
-                <button type="submit" class="btn btn-dark" onclick="comprar()">Comprar</button>
+                <button class="btn btn-dark" onclick="comprar()">Comprar</button>
             </form>
         </div>
     </main>
