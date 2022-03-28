@@ -71,8 +71,6 @@ console.log(favoritos);
 //             </div>
 //             </div>
 //             </div>`;
-//         } else {
-//             cardsGeneradas += ``
 //         }
 //     });
 //     mostrarCardsEnElHTML(cardsGeneradas);

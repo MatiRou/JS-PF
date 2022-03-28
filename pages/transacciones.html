@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
         integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="../src/basededatos.js" defer></script>
+    <script src="../src/movimientos.js" defer></script>
     <title>IS Wallet</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="../estilos.css">
@@ -61,7 +63,15 @@
     <!-- inicio del main -->
 
     <main class="container animate__animated animate__fadeInUp">
-
+        <section
+            class="texto animate__animated animate__backInLeft col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 offset-md-12 offset-lg-12 offset-xl-12">
+            <h1>Ultimos Movimientos:</h1>
+            <div id="datos">
+                <ul id="ultimos-movimientos">
+                    <li></li>
+                </ul>
+            </div>
+        </section>
     </main>
 
 
@@ -115,7 +125,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
         integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous">
     </script>
-    <script src="../src/main.js"></script>
 
     <!-- fin de Scripts -->
 </body>
