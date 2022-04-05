@@ -55,15 +55,12 @@ function convertir() {
     const idMonedaPaga = document.getElementById("pagarcompra").value;
     const monedaSeleccionada = monedas.find(monedaC => monedaC.id == idMonedaCompra);
     const monedaPagar = monedas.find(monedaP => monedaP.id == idMonedaPaga);
-    const tieneSaldo = validarSaldo(monedaPagar.saldoMoneda, monedaPagar.precioMonedaUsd, valor, monedaSeleccionada.precioMonedaUsd);
+    // const tieneSaldo = validarSaldo(monedaPagar.saldoMoneda, monedaPagar.precioMonedaUsd, valor, monedaSeleccionada.precioMonedaUsd);
+    const tieneSaldo = ((monedaPagar.saldoMoneda * monedaPagar.precioMonedaUsd)>(valor * monedaSeleccionada.precioMonedaUsd)) ? true : false
     const cotizador = (monedaSeleccionada.precioMonedaUsd / monedaPagar.precioMonedaUsd);
     const cotizacionTitulo = `Cotizacion: ${monedaSeleccionada.abreviatura} / ${monedaPagar.abreviatura}`
     if (valor > 0) {
-        if (tieneSaldo) {
-            resultado = ((valor * monedaSeleccionada.precioMonedaUsd) / monedaPagar.precioMonedaUsd);
-        } else {
-            resultado = "no tiene saldo disponible"
-        }
+        tieneSaldo ? resultado = ((valor * monedaSeleccionada.precioMonedaUsd) / monedaPagar.precioMonedaUsd) : resultado = "no tiene saldo disponible";
     } else {
         resultado = "Ingrese el monto que quiera comprar"
     }
@@ -72,13 +69,13 @@ function convertir() {
     document.getElementById("cotizacion-titulo").innerHTML = cotizacionTitulo;
 }
 
-function validarSaldo(saldo, precioC, importePedido, precioP) {
-    if ((saldo * precioC) > (importePedido * precioP)) {
-        return true;
-    } else {
-        return false;
-    }
-}
+// function validarSaldo(saldo, precioC, importePedido, precioP) {
+//     if ((saldo * precioC) > (importePedido * precioP)) {
+//         return true;
+//     } else {
+//         return false;
+//     }
+// }
 
 
 // ./convertir
@@ -97,7 +94,8 @@ function comprar() {
     const precioMonedaComprada = monedaSeleccionada.precioMonedaUsd;
     const fechaDeTrx = new Date();
     const idDeTrx = transaccionesRealizadas.length + 1;
-    const tieneSaldo = validarSaldo(monedaPagar.saldoMoneda, monedaPagar.precioMonedaUsd, valor, monedaSeleccionada.precioMonedaUsd);
+    // const tieneSaldo = validarSaldo(monedaPagar.saldoMoneda, monedaPagar.precioMonedaUsd, valor, monedaSeleccionada.precioMonedaUsd);
+    const tieneSaldo = ((monedaPagar.saldoMoneda * monedaPagar.precioMonedaUsd)>(valor * monedaSeleccionada.precioMonedaUsd)) ? true : false
     if (tieneSaldo) {
         const trx = new TransaccionesRealizadas (idDeTrx, monedaSeleccionada.nombreDeMoneda, valor, precioMonedaComprada, monedaPagar.nombreDeMoneda, importeMonedaPaga, fechaDeTrx)
         transaccionesRealizadas.push(trx)

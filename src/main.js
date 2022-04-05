@@ -51,39 +51,3 @@ console.log(favoritos);
 
 
 // ************************./INDEX HTML *********************************
-
-// // ************************ cards de prueba ***********************************
-
-
-// generarCard(monedas);
-
-// function generarCard(monedas) {
-//     let cardsGeneradas = ``;
-//     // const saldoValidado = monedas.saldoMoneda > 0 ? "true" : "false";
-//     monedas.forEach(elementoDelArray => {
-//         if (elementoDelArray.saldoMoneda > 0) {
-//             cardsGeneradas += `
-//             <div class="col-sm-6">
-//             <div class="card">
-//             <div class="card-body">
-//             <h5 class="card-title">${elementoDelArray.nombreDeMoneda}</h5>
-//             <p class="card-text">${elementoDelArray.saldoMoneda} ${elementoDelArray.abreviatura}</p>
-//             </div>
-//             </div>
-//             </div>`;
-//         }
-//     });
-//     mostrarCardsEnElHTML(cardsGeneradas);
-// }
-
-// function mostrarCardsEnElHTML(cards) {
-//     document.getElementById("saldos-monedas-index").innerHTML = cards
-// }
-
-// function validadorSaldo(monedas) {
-//     if (monedas.saldoMoneda > 0) {
-//         return true;
-//     } else {
-//         return false;
-//     }
-// }
