@@ -100,14 +100,26 @@ function comprar() {
         const trx = new TransaccionesRealizadas (idDeTrx, monedaSeleccionada.nombreDeMoneda, valor, precioMonedaComprada, monedaPagar.nombreDeMoneda, importeMonedaPaga, fechaDeTrx)
         transaccionesRealizadas.push(trx)
         localStorage.setItem("transacciones", JSON.stringify(transaccionesRealizadas));
-        transaccionResultante = `<div> Su operacion ha sido exitosa: </div>`;
+        // transaccionResultante = `<div> Su operacion ha sido exitosa: </div>`;
         monedaSeleccionada.saldoMoneda = monedaSeleccionada.saldoMoneda + valor;
         monedaPagar.saldoMoneda = monedaPagar.saldoMoneda - importeMonedaPaga;
+        swal({
+            title: "Good job!",
+            text: "Su operacion ha sido exitosa!",
+            icon: "success",
+            button: "Aceptar!",
+          });
     } else {
-        transaccionResultante = `<div>No tiene saldo para realizar esta operacion.</div>`;
+        swal({
+            title: "Error",
+            text: "No tiene saldo para realizar esta operacion.",
+            icon: "warning",
+            button: "Volver a intentar!",
+          });
+        // transaccionResultante = `<div>No tiene saldo para realizar esta operacion.</div>`;
     }
     console.log(localStorage.getItem("transacciones"));
-    document.getElementById("modal-texto").innerHTML = transaccionResultante
+    // document.getElementById("modal-texto").innerHTML = transaccionResultante
 }
 
 // ******************* ./ COMPRAR.HTML ********************************
